@@ -5,9 +5,9 @@ export default function Home() {
     <div className="h-screen overflow-y-auto font-montserrat bg-white">
       <div className="flex flex-col h-screen">
         {/* First element centered */}
-        <div className="flex-1 p-4 justify-items-center">
-          <h1 className="text-8xl">PORTFOLIO</h1>
-          <h1 className="text-6xl">Portfolio</h1>
+        <div className="flex-1 p-4 flex flex-col items-center">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl">PORTFOLIO</h1>
+          <h1 className="text-2xl md:text-4xl lg:text-6xl">Portfolio</h1>
         </div>
 
         {/* Second element with responsive visibility */}
