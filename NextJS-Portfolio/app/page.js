@@ -47,7 +47,7 @@ export default function Home() {
       <Navigation activeSection={activeSection} scrollToSection={scrollToSection} />
 
       {/* Home Section */}
-      <Section id="home" className="flex flex-col">
+      <Section id="home" className="h-screen flex flex-col">
         <div className="flex-1 p-4 flex flex-col items-center">
           <h1 className="text-4xl md:text-6xl lg:text-8xl">PORTFOLIO</h1>
           <h1 className="text-2xl md:text-4xl lg:text-6xl">Portfolio</h1>
@@ -65,11 +65,14 @@ export default function Home() {
       </Section>
 
       {/* Projects Section */}
-      <Section id="projects" className="bg-gray-200 flex items-center justify-center">
+      <Section id="projects" className="h-screen bg-gray-200 flex items-center justify-center">
         <p className="text-2xl">Additional content below the main section...</p>
       </Section>
 
-      {/* Add more sections here using <Section> component */}
+      {/* Timeline Section */}
+      <Section id="timeline" className="bg-gray-400 flex items-center justify-center">
+        <p style={{height: '2000px'}} className="text-2xl">Timeline</p>
+      </Section>
     </div>
   );
 }
