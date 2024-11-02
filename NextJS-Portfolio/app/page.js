@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Navigation from "./components/Navigation";
 import Section from "./components/Section";
 import { sections } from "./data/sections";
+import LottieAnimation from "./components/LottieAnimation";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -52,11 +53,8 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl lg:text-8xl">PORTFOLIO</h1>
           <h1 className="text-2xl md:text-4xl lg:text-6xl">Portfolio</h1>
         </div>
-        <div className="flex flex-row justify-between">
-          <div
-            style={{ width: "300px", height: "300px" }}
-            className="bg-red-500 hidden xl:block"
-          ></div>
+        <div className="flex flex-row justify-between align items-end">
+          <LottieAnimation path="scaling_circle.json" />
           <div
             style={{ width: "800px", height: "300px" }}
             className="bg-gray-700 ml-auto"
