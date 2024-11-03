@@ -1,0 +1,17 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api/
+
+# *
+User-agent: *
+Disallow: /_next/
+
+# Host
+Host: https://www.hjalmargraphics.com
+
+# Sitemaps
+Sitemap: https://www.hjalmargraphics.com/sitemap.xml

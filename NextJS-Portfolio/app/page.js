@@ -44,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen overflow-y-auto font-montserrat bg-white scroll-smooth">
+    <div className="h-screen overflow-y-auto bg-white scroll-smooth">
       <Navigation activeSection={activeSection} scrollToSection={scrollToSection} />
 
       {/* Home Section */}
@@ -54,7 +54,7 @@ export default function Home() {
           <h1 className="text-2xl md:text-4xl lg:text-6xl">Portfolio</h1>
         </div>
         <div className="flex flex-row justify-between align items-end">
-          <LottieAnimation path="scaling_circle.json" />
+          <LottieAnimation path="scaling_circle.json" className="hidden xl:block" />
           <div
             style={{ width: "800px", height: "300px" }}
             className="bg-gray-700 ml-auto"

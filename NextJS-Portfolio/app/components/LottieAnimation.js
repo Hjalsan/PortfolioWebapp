@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLottie } from 'lottie-react';
 
-const LottieAnimation = ({ path, loop = true, autoplay = true, style }) => {
+const LottieAnimation = ({ path, loop = true, autoplay = true, className }) => {
   const options = {
     path: path,
     loop,
@@ -10,7 +10,11 @@ const LottieAnimation = ({ path, loop = true, autoplay = true, style }) => {
 
   const { View } = useLottie(options);
 
-  return <div style={style}>{View}</div>;
+  return (
+    <div className={className}>
+      {View}
+    </div>
+  );
 };
 
 export default LottieAnimation;
