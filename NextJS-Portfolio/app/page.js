@@ -61,15 +61,11 @@ export default function Home() {
       {/* Home Section */}
       <Section id="home" className="h-screen flex flex-col">
         <div className="flex-1 p-4 flex flex-col items-center">
-          <h1 className="text-4xl md:text-6xl lg:text-8xl">PORTFOLIO</h1>
-          <h1 className="text-2xl md:text-4xl lg:text-6xl">Portfolio</h1>
+          <img src="/Home/PortfolioSkrift.svg" width={650} className="antialiased"/>
         </div>
         <div className="flex flex-row justify-between align items-end">
-          <LottieAnimation path="scaling_circle.json" className="hidden xl:block" />
-          <div
-            style={{ width: "800px", height: "300px" }}
-            className="bg-gray-700 ml-auto"
-          ></div>
+          <img src="/Home/Blomster.svg" width={1400} className="hidden xl:block antialiased" />
+          <img src="/Home/HjalmarComputer.svg" width={1000} className="antialiased"/>
         </div>
       </Section>
 
