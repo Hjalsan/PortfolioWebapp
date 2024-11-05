@@ -12,10 +12,10 @@ export default function Home() {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.25,
+      rootMargin: "-20% 0px -20% 0px",
+      threshold: 0.1,
     };
-
+  
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -23,26 +23,26 @@ export default function Home() {
         }
       });
     };
-
+  
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-
+  
     const observeSections = () => {
       sections.forEach((section) => {
         const element = document.getElementById(section.id);
         if (element) observer.observe(element);
       });
     };
-
+  
     observeSections();
-
+  
     // Update observer on viewport resize
     const handleResize = () => {
       observer.disconnect();
       observeSections(); 
     };
-
+  
     window.addEventListener("resize", handleResize);
-
+  
     // Cleanup on unmount
     return () => {
       observer.disconnect();
