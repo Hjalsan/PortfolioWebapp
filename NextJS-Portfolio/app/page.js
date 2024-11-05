@@ -13,7 +13,7 @@ export default function Home() {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5,
+      threshold: 0.25,
     };
 
     const observerCallback = (entries) => {
@@ -26,16 +26,27 @@ export default function Home() {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    sections.forEach((section) => {
-      const element = document.getElementById(section.id);
-      if (element) observer.observe(element);
-    });
-
-    return () => {
+    const observeSections = () => {
       sections.forEach((section) => {
         const element = document.getElementById(section.id);
-        if (element) observer.unobserve(element);
+        if (element) observer.observe(element);
       });
+    };
+
+    observeSections();
+
+    // Update observer on viewport resize
+    const handleResize = () => {
+      observer.disconnect();
+      observeSections(); 
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup on unmount
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -69,7 +80,7 @@ export default function Home() {
 
       {/* Timeline Section */}
       <Section id="timeline" className="bg-gray-400 flex items-center justify-center">
-        <p style={{height: '2000px'}} className="text-2xl">Timeline</p>
+        <p style={{ height: '2000px' }} className="text-2xl">Timeline</p>
       </Section>
     </div>
   );
