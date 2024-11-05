@@ -14,6 +14,7 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        hjalmarBlue: "#0063f9",
       },
     },
   },
