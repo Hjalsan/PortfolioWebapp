@@ -1,3 +1,5 @@
+@import url("https://use.typekit.net/phe5bnn.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,8 +18,13 @@
 }
 */
 
+@font-face {
+  font-family: 'montserrat';
+  font-display: swap;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'montserrat', Arial, Helvetica, sans-serif;
+  font-family: montserrat, Arial, Helvetica, sans-serif;
 }

@@ -20,10 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="stylesheet" href="https://use.typekit.net/phe5bnn.css" />
-      </head>
-      <body>
+      <body className="antialiased">
         {children}
       </body>
     </html>
