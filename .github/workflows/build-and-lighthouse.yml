@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Navigate to Next.js app and install dependencies
+      - name: Install dependencies
         run: |
           cd NextJS-Portfolio
           npm install
@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Navigate to Next.js app and install dependencies
+      - name: Install dependencies
         run: |
           cd NextJS-Portfolio
           npm install
@@ -50,12 +50,20 @@ jobs:
       - name: Start Next.js app
         run: |
           cd NextJS-Portfolio
-          npm start &
+          nohup npm start &
         env:
-          PORT: 3000 # Ensure the server listens on this port
+          PORT: 3000
 
       - name: Wait for server to be ready
-        run: sleep 15 # Adjust this as needed to ensure the server is ready
+        run: |
+          for i in {1..30}; do
+            if curl -s http://localhost:3000 > /dev/null; then
+              echo "Server is ready!"
+              break
+            fi
+            echo "Waiting for server..."
+            sleep 5
+          done
 
       - name: Run Lighthouse audit
         uses: treosh/lighthouse-ci-action@v12
