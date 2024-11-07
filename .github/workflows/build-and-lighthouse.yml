@@ -51,10 +51,14 @@ jobs:
         run: |
           cd NextJS-Portfolio
           npm start &
+        env:
+          PORT: 3000 # Ensure the server listens on this port
+
+      - name: Wait for server to be ready
+        run: sleep 10 # Adjust this as needed to ensure the server is ready
 
       - name: Run Lighthouse audit
         uses: treosh/lighthouse-ci-action@v12
         with:
           urls: 'http://localhost:3000'
-          output: 'html'
           uploadArtifacts: true
