@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Navigation from "./components/Navigation";
 import Section from "./components/Section";
 import { sections } from "./data/sections";
-import LottieAnimation from "./components/LottieAnimation";
 import { worksParagraph } from "./data/works";
 
 export default function Home() {
