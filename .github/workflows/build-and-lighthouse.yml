@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  build_and_lighthouse:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,33 +19,11 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install dependencies and build
         run: |
           cd NextJS-Portfolio
           npm install
-
-      - name: Build Next.js app
-        run: |
-          cd NextJS-Portfolio
           npm run build
-
-  lighthouse:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4.2.2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4.1.0
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: |
-          cd NextJS-Portfolio
-          npm install
 
       - name: Start Next.js app
         run: |
