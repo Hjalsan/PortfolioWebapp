@@ -5,6 +5,7 @@ import Navigation from "./components/Navigation";
 import Section from "./components/Section";
 import { sections } from "./data/sections";
 import { worksParagraph } from "./data/works";
+import LottieAnimation from "./components/LottieAnimation";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -74,17 +75,30 @@ export default function Home() {
       {/* Projects Section */}
       <Section id="works" className="h-screen bg-white flex items-center justify-center">
         <div className="flex flex-row">
-          <div className="flex flex-col">
+          <div className="flex flex-col justify-center mb-20 mr-24">
             <h1 className="text-hjalmarBlue font-bold text-9xl mb-5">Hej!</h1>
             <p className="text-2xl" style={{width: "950px"}}>{worksParagraph}</p>
           </div>
-          <div style={{width: "200px", height: "600px"}} className="bg-blue-500" />
+          <div className="flex flex-row bg-blue-200" >
+            <div>
+              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
+              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
+              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
+            </div>
+            <div>
+              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
+              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
+              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
+            </div>
+          </div>
         </div>
       </Section>
 
       {/* Timeline Section */}
       <Section id="about" className="bg-gray-400 flex items-center justify-center">
-        <p style={{ height: '2000px' }} className="text-2xl">Timeline</p>
+        <div style={{height: "2000px"}}>
+          <LottieAnimation path="/Loader/LoaderPortfolio.json" />
+        </div>
       </Section>
     </div>
   );
