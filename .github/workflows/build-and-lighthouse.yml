@@ -1,0 +1,60 @@
+name: Build and Lighthouse Audit
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.1.0
+        with:
+          node-version: '18'
+
+      - name: Navigate to Next.js app and install dependencies
+        run: |
+          cd NextJS-Portfolio
+          npm install
+
+      - name: Build Next.js app
+        run: |
+          cd NextJS-Portfolio
+          npm run build
+
+  lighthouse:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.1.0
+        with:
+          node-version: '18'
+
+      - name: Navigate to Next.js app and install dependencies
+        run: |
+          cd NextJS-Portfolio
+          npm install
+
+      - name: Start Next.js app
+        run: |
+          cd NextJS-Portfolio
+          npm start &
+
+      - name: Run Lighthouse audit
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: 'http://localhost:3000'
+          output: 'html'
+          uploadArtifacts: true
