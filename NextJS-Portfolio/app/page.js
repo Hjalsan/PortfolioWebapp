@@ -57,7 +57,7 @@ export default function Home() {
 
   return (
     <div className="h-screen overflow-y-auto bg-white scroll-smooth">
-      <Navigation activeSection={activeSection} scrollToSection={scrollToSection} />
+      <Navigation activeSection={activeSection} scrollToSection={scrollToSection} className="hidden md:block" />
 
       {/* Home Section */}
       <Section id="home" className="h-screen flex flex-col">
@@ -75,20 +75,22 @@ export default function Home() {
       {/* Projects Section */}
       <Section id="works" className="h-screen bg-white flex items-center justify-center">
         <div className="flex flex-row">
-          <div className="flex flex-col justify-center mb-20 mr-24">
+          <div className="flex flex-col justify-center m-5 lg:m-20">
             <h1 className="text-hjalmarBlue font-bold text-9xl mb-5">Hej!</h1>
-            <p className="text-2xl" style={{width: "950px"}}>{worksParagraph}</p>
+            <p className="text-lg lg:text-2xl" style={{maxWidth: "950px"}}>{worksParagraph}</p>
           </div>
-          <div className="flex flex-row bg-blue-200" >
-            <div>
-              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
-              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
-              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
-            </div>
-            <div>
-              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
-              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
-              <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
+          <div className="hidden 2xl:block">
+            <div className="flex flex-row bg-blue-200" >
+              <div>
+                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
+                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
+                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
+              </div>
+              <div>
+                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
+                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
+                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
+              </div>
             </div>
           </div>
         </div>
