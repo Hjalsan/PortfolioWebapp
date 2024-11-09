@@ -1,11 +1,14 @@
 "use client";
 
+import Link from 'next/link';
 import { useEffect, useState } from "react";
 import Navigation from "./components/Navigation";
+import LottieAnimation from "./components/LottieAnimation";
 import Section from "./components/Section";
+
 import { sections } from "./data/sections";
 import { worksParagraph } from "./data/works";
-import LottieAnimation from "./components/LottieAnimation";
+import projects from "./data/projects.json";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -80,17 +83,17 @@ export default function Home() {
             <p className="text-lg lg:text-2xl" style={{maxWidth: "950px"}}>{worksParagraph}</p>
           </div>
           <div className="hidden 2xl:block">
-            <div className="flex flex-row bg-blue-200" >
-              <div>
-                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
-                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
-                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4"/>
-              </div>
-              <div>
-                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
-                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
-                <div style={{width: "200px", height: "200px"}} className="bg-red-500 m-4 ml-0"/>
-              </div>
+            <div className="grid grid-cols-2 gap-6">
+              {projects.map((project, index) => (
+                <Link key={index} href={`/projects/${encodeURIComponent(project.title)}`}>
+                  <div style={{width: "200px", height: "200px"}} className="flex relative shadow">
+                    <img className="" src={project.icon} alt={`${project.title} icon`}/>
+                    <div className="flex justify-center items-center absolute inset-0 transition duration-200 bg-hjalmarBlue opacity-0 hover:opacity-80">
+                      <h2 className="text-4xl font-bold text-white text-center break-words">{project.title}</h2>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
