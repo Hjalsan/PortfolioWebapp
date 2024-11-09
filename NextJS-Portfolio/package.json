@@ -10,6 +10,10 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.6",
+    "@mui/material": "^6.1.6",
     "lottie-react": "^2.4.0",
     "next": "^15.0.2",
     "next-sitemap": "^4.2.3",
