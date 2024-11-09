@@ -59,11 +59,11 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen overflow-y-auto bg-white scroll-smooth">
+    <div className="min-h-screen overflow-y-auto bg-white scroll-smooth">
       <Navigation activeSection={activeSection} scrollToSection={scrollToSection} className="hidden md:block" />
 
       {/* Home Section */}
-      <Section id="home" className="h-screen flex flex-col">
+      <Section id="home" className="min-h-screen flex flex-col">
         <div className="flex-1 p-4 flex flex-col items-center">
           {/* Set a fixed size for the image */}
           <img src="/Home/PortfolioSkrift.svg" className="antialiased" alt="Portfolio MEDIEGRAFIKER ELEV" />
@@ -76,7 +76,7 @@ export default function Home() {
       </Section>
 
       {/* Projects Section */}
-      <Section id="works" className="h-screen bg-white flex items-center justify-center">
+      <Section id="works" className="min-h-screen bg-white flex items-center justify-center">
         <div className="flex flex-row">
           <div className="flex flex-col justify-center m-5 lg:m-20">
             <h1 className="text-hjalmarBlue font-bold text-9xl mb-5">Hej!</h1>
