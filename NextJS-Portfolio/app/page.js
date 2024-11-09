@@ -66,12 +66,12 @@ export default function Home() {
       <Section id="home" className="h-screen flex flex-col">
         <div className="flex-1 p-4 flex flex-col items-center">
           {/* Set a fixed size for the image */}
-          <img src="/Home/PortfolioSkrift.svg" width={"30%"} className="antialiased" alt="Portfolio MEDIEGRAFIKER ELEV" />
+          <img src="/Home/PortfolioSkrift.svg" className="antialiased" alt="Portfolio MEDIEGRAFIKER ELEV" />
         </div>
         <div className="flex flex-row justify-between align items-end">
           {/* Fixed width and height for the background image */}
-          <img src="/Home/Blomster.svg" width={"62%"} className="hidden xl:block antialiased" alt="Flowers" />
-          <img src="/Home/HjalmarComputer.svg" width={"35%"} className="antialiased" alt="Hjalmar Sitting at desk" />
+          <img src="/Home/Blomster.svg" className="hidden xl:block antialiased" alt="Flowers" />
+          <img src="/Home/HjalmarComputer.svg" className="antialiased" alt="Hjalmar Sitting at desk" />
         </div>
       </Section>
 
