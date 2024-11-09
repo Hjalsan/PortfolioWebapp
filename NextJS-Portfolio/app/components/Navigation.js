@@ -47,8 +47,8 @@ export default function Navigation({ activeSection, scrollToSection, className }
                   <Call fontSize="large" className="mr-3"/>
                   +45 42 58 31 58
                 </div>
-                <div>
-                  <Inbox fontSize="large" className="mr-3"/>
+                <div className="flex items-center">
+                  <img src="/linkedin.svg" style={{width: "36px"}} className="mr-3"/>
                   LinkedIn
                 </div>
                 <div>
