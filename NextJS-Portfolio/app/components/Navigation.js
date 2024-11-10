@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { Call, Dataset, Inbox, Mail } from "@mui/icons-material"
-
+import { Call, Mail } from "@mui/icons-material";
 import { sections } from "../data/sections";
 
 export default function Navigation({ activeSection, scrollToSection, className }) {
   const [showContacts, setShowContacts] = useState(false);
 
   return (
-    <div className={`${className} relative`}>
+    <div
+      className={`${className} relative`}
+      onMouseLeave={() => setShowContacts(false)}
+    >
       {/* Main Navigation */}
       <div className="fixed top-6 left-6 z-10 text-2xl text-hjalmarBlue">
         <div className="flex">
-          <nav className="space-y-1 backdrop-blur-lg p-3 rounded-xl">
+          <nav className="space-y-1 backdrop-blur-lg p-3 rounded-xl relative">
             {sections.map((section) => (
               <button
                 key={section.id}
@@ -32,8 +34,10 @@ export default function Navigation({ activeSection, scrollToSection, className }
             ))}
             {/* Contacts Button */}
             <button
-              className={`flex items-center px-3 py-1 bg-transparent rounded ${showContacts ? "font-bold" : ""}`}
-              onClick={() => setShowContacts(!showContacts)}
+              onMouseEnter={() => setShowContacts(true)}
+              className={`flex items-center px-3 py-1 bg-transparent rounded ${
+                showContacts ? "font-bold" : ""
+              }`}
             >
               <span className="w-2 h-2 rounded-full mr-2" />
               Contacts
@@ -43,16 +47,20 @@ export default function Navigation({ activeSection, scrollToSection, className }
           {showContacts && (
             <div className="ml-3 backdrop-blur-lg bg-white/20 border border-white/30 shadow-lg p-4 rounded-xl text-hjalmarBlue transition-opacity duration-200">
               <div className="flex flex-col justify-between h-full">
-                <div>
-                  <Call fontSize="large" className="mr-3"/>
+                <div className="flex items-center mb-2">
+                  <Call fontSize="large" className="mr-3" />
                   +45 42 58 31 58
                 </div>
-                <div className="flex items-center">
-                  <img src="/linkedin.svg" style={{width: "36px"}} className="mr-3"/>
+                <div className="flex items-center mb-2">
+                  <img
+                    src="/linkedin.svg"
+                    style={{ width: "36px" }}
+                    className="mr-3"
+                  />
                   LinkedIn
                 </div>
-                <div>
-                  <Mail fontSize="large" className="mr-3"/>
+                <div className="flex items-center">
+                  <Mail fontSize="large" className="mr-3" />
                   Mail
                 </div>
               </div>
