@@ -59,7 +59,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen overflow-y-auto bg-white scroll-smooth">
+    <div className="min-h-screen overflow-y-auto scroll-smooth">
       <Navigation activeSection={activeSection} scrollToSection={scrollToSection} className="hidden md:block" />
 
       {/* Home Section */}
@@ -71,7 +71,8 @@ export default function Home() {
         <div className="flex flex-row justify-between align items-end">
           {/* Fixed width and height for the background image */}
           <img src="/Home/Blomster.svg" className="hidden xl:block antialiased" alt="Flowers" />
-          <img src="/Home/HjalmarComputer.svg" className="antialiased" alt="Hjalmar Sitting at desk" />
+          <LottieAnimation path="/Home/HjalmarComputerAnimation.json" alt="Hjalmar Sitting at desk" />
+          {/*<img src="/Home/HjalmarComputer.svg" className="antialiased" alt="Hjalmar Sitting at desk" />*/}
         </div>
       </Section>
 
