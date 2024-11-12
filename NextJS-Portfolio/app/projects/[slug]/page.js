@@ -22,7 +22,7 @@ export default async function ProjectPage({ params }) {
       </div>
       
       {/* Right Column: Media */}
-      <div style={{width: "600px"}} className="overflow-y-auto">
+      <div style={{width: "700px"}} className="overflow-y-auto">
         {projectData.media.map((src, index) => (
           <img key={index} src={src} alt={`Media ${index + 1}`} className="my-4 w-full" />
         ))}

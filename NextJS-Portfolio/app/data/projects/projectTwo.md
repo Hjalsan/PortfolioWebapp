@@ -6,6 +6,7 @@ media:
   - "/next.svg"
   - "/next.svg"
   - "/ProjectOne/ProjectOne.jpg"
+  - "/ProjectOne/ProjectOne.jpg"
 ---
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
