@@ -13,7 +13,7 @@ export default function Navigation({ activeSection, scrollToSection, className }
       {/* Main Navigation */}
       <div className="fixed top-6 left-6 z-10 text-2xl text-hjalmarBlue">
         <div className="flex">
-          <nav className="space-y-1 backdrop-blur-lg p-3 rounded-xl relative">
+          <nav className="space-y-1 p-3 backdrop-blur-lg bg-white/20 border border-white/30 shadow-lg rounded-xl relative">
             {sections.map((section) => (
               <button
                 key={section.id}
@@ -45,23 +45,23 @@ export default function Navigation({ activeSection, scrollToSection, className }
           </nav>
           {/* Contacts Menu - Positioned next to the main navigation */}
           {showContacts && (
-            <div className="ml-3 backdrop-blur-lg bg-white/20 border border-white/30 shadow-lg p-4 rounded-xl text-hjalmarBlue transition-opacity duration-200">
-              <div className="flex flex-col justify-between h-full">
-                <div className="flex items-center mb-2">
+            <div className="ml-3 p-4 backdrop-blur-lg bg-white/20 border border-white/30 shadow-lg rounded-xl text-hjalmarBlue transition-opacity duration-200">
+              <div className="flex flex-col justify-between h-full text-xl">
+                <div className="flex items-center">
                   <Call fontSize="large" className="mr-3" />
-                  +45 42 58 31 58
+                  <a href="tel:+4542583158">+45 42 58 31 58</a>
                 </div>
-                <div className="flex items-center mb-2">
+                <div className="flex items-center">
+                  <Mail fontSize="large" className="mr-3" />
+                  <a href="mailto:hjalmargraphics@gmail.com">hjalmargraphics@gmail.com</a>
+                </div>
+                <div className="flex items-center">
                   <img
                     src="/linkedin.svg"
                     style={{ width: "36px" }}
                     className="mr-3"
                   />
-                  LinkedIn
-                </div>
-                <div className="flex items-center">
-                  <Mail fontSize="large" className="mr-3" />
-                  Mail
+                  <a href="https://www.linkedin.com/in/hjalmar-kjeldsen-b4264826a" target="_blank" rel="noopener">Hjalmar Kjeldsen</a>
                 </div>
               </div>
             </div>
