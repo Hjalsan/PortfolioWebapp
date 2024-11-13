@@ -65,7 +65,7 @@ export default function Home() {
 
       {/* Home Section */}
       <Section id="home" className="min-h-screen flex flex-col">
-        <div className="flex-1 p-4 flex flex-col items-center">
+        <div className="flex-1 p-6 flex flex-col items-center">
           {/* Set a fixed size for the image */}
           <img src="/Home/PortfolioSkrift.svg" className="antialiased" alt="Portfolio MEDIEGRAFIKER ELEV" />
         </div>

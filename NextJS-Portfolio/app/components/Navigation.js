@@ -13,7 +13,7 @@ export default function Navigation({ activeSection, scrollToSection, className }
       {/* Main Navigation */}
       <div className="fixed top-6 left-6 z-10 text-2xl text-hjalmarBlue">
         <div className="flex">
-          <nav className="space-y-1 p-3 backdrop-blur-lg bg-white/20 border border-white/30 shadow-lg rounded-xl relative">
+          <nav className="space-y-1 rounded-xl relative">
             {sections.map((section) => (
               <button
                 key={section.id}
