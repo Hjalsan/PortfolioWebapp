@@ -11,9 +11,9 @@ export default function Navigation({ activeSection, scrollToSection, className }
   return (
     <div className={`${className} relative`}>
       {/* Main Navigation */}
-      <div className="fixed top-6 left-6 z-10 text-2xl text-hjalmarBlue">
+      <div className="fixed top-16 left-16 z-10 text-2xl text-hjalmarBlue">
         <div className="flex">
-          <nav className="space-y-1 rounded-xl relative">
+          <nav style={{width: "167px"}} className="space-y-1 p-2 relative backdrop-blur-lg bg-white/20 border border-white/30 rounded-xl">
             {sections.map((section) => (
               <button
                 key={section.id}
