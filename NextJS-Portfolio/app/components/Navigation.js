@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Call, Mail } from "@mui/icons-material";
 import { sections } from "../data/sections";
+import { Link } from 'react-scroll';
 
-export default function Navigation({ activeSection, scrollToSection, className }) {
+export default function Navigation({ className }) {
+  const [activeSection, setActiveSection] = useState("home");
   const [showContacts, setShowContacts] = useState(false);
 
   const handleMouseEnterContacts = () => setShowContacts(true);
@@ -13,13 +15,20 @@ export default function Navigation({ activeSection, scrollToSection, className }
       {/* Main Navigation */}
       <div className="fixed top-12 left-5 z-10 text-2xl text-hjalmarBlue">
         <div className="flex">
-          <nav style={{width: "160px"}} className="space-y-1 p-2 relative backdrop-blur-lg bg-white/20 border border-white/30 rounded-xl">
+          <nav
+            style={{ width: "160px" }}
+            className="space-y-1 p-2 relative backdrop-blur-lg bg-white/20 border border-white/30 rounded-xl"
+          >
             {sections.map((section) => (
-              <button
+              <Link
                 key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                onMouseEnter={() => setShowContacts(false)} // Close contacts menu when hovering other buttons
-                className={`flex items-center px-3 py-1 bg-transparent rounded hover:font-bold ${
+                to={section.id}
+                spy={true}
+                smooth={true}
+                duration={500}
+                onSetActive={() => setActiveSection(section.id)}
+                onMouseEnter={() => setShowContacts(false)}
+                className={`flex items-center px-3 py-1 bg-transparent rounded hover:font-bold cursor-pointer ${
                   activeSection === section.id ? "font-bold" : ""
                 }`}
               >
@@ -31,8 +40,9 @@ export default function Navigation({ activeSection, scrollToSection, className }
                   }`}
                 />
                 {section.title}
-              </button>
+              </Link>
             ))}
+
             {/* Contacts Button */}
             <button
               onMouseEnter={handleMouseEnterContacts}
@@ -46,13 +56,14 @@ export default function Navigation({ activeSection, scrollToSection, className }
             </button>
           </nav>
 
-          {/* Contacts Menu - Positioned next to the main navigation */}
+          {/* Contacts Menu */}
           {showContacts && (
-            <div className="pl-3"
+            <div
+              className="pl-3"
               onMouseEnter={handleMouseEnterContacts}
-              onMouseLeave={handleMouseLeaveContacts}>
-              <div
-                className="p-4 h-full backdrop-blur-lg bg-white/20 border border-white/30 shadow-lg rounded-xl text-hjalmarBlue transition-opacity duration-200">
+              onMouseLeave={handleMouseLeaveContacts}
+            >
+              <div className="p-4 h-full backdrop-blur-lg bg-white/20 border border-white/30 shadow-lg rounded-xl text-hjalmarBlue transition-opacity duration-200">
                 <div className="flex flex-col justify-between h-full text-xl">
                   <div className="flex items-center">
                     <Call fontSize="large" className="mr-3" />
@@ -67,8 +78,15 @@ export default function Navigation({ activeSection, scrollToSection, className }
                       src="/linkedin.svg"
                       style={{ width: "36px" }}
                       className="mr-3"
+                      alt="LinkedIn"
                     />
-                    <a href="https://www.linkedin.com/in/hjalmar-kjeldsen-b4264826a" target="_blank" rel="noopener">Hjalmar Kjeldsen</a>
+                    <a
+                      href="https://www.linkedin.com/in/hjalmar-kjeldsen-b4264826a"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Hjalmar Kjeldsen
+                    </a>
                   </div>
                 </div>
               </div>
