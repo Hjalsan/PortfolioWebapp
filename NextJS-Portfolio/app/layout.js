@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { worksParagraph } from "./data/works";
+
 /*
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,7 +26,7 @@ const montserrat = localFont({
 
 export const metadata = {
   title: "Hjalmar Graphics",
-  description: "Hjalmar Portfolio",
+  description: worksParagraph,
 };
 
 export default function RootLayout({ children }) {
