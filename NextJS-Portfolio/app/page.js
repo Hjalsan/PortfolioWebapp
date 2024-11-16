@@ -49,7 +49,7 @@ export default function Home() {
 
       {/* Home Section */}
       <Element name="home" className="element min-h-screen flex flex-col">
-        <div className="flex-1 p-16 flex flex-col items-center">
+        <div className="flex-1 pt-16 flex flex-col items-center">
           <img
             src="/Home/PortfolioSkrift.svg"
             className="antialiased"
