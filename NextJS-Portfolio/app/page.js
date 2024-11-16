@@ -49,7 +49,7 @@ export default function Home() {
 
       {/* Home Section */}
       <Element name="home" className="element min-h-screen flex flex-col">
-        <div className="flex-1 pt-16 flex flex-col items-center">
+        <div className="flex-1 p-16 flex flex-col items-center">
           <img
             src="/Home/PortfolioSkrift.svg"
             className="antialiased"
@@ -93,7 +93,7 @@ export default function Home() {
       {/* Projects Section */}
       <Element
         name="works"
-        className="element min-h-screen bg-white flex items-center justify-center"
+        className="element min-h-screen bg-white flex items-center justify-center bg-transparent xl:bg-[url('/Works/WorksBackground.svg')] bg-cover bg-center bg-no-repeat"
       >
         <div className="flex flex-row">
           <div className="flex flex-col justify-center m-5 lg:m-20">
