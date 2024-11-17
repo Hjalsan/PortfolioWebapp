@@ -5,6 +5,13 @@ export async function generateStaticParams() {
   return paths.map((path) => ({ slug: path.params.slug }));
 }
 
+export async function generateMetadata({ params }) {
+  const projectData = getProjectData(await params.slug);
+  return {
+    title: projectData.title,
+  };
+}
+
 async function getData(slug) {
   return getProjectData(slug);
 }

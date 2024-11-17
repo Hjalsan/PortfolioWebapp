@@ -9,6 +9,7 @@ import { worksParagraph } from "./data/works";
 
 export default function Home() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [scrollPos, setScrollPos] = useState(0);
   const [eyesOffset, setEyesOffset] = useState({ x: 0, y: 0 });
   const eyesContainerRef = useRef(null);
 
@@ -17,31 +18,44 @@ export default function Home() {
       setCursorPos({ x: event.clientX, y: event.clientY });
     };
 
+    const handleScroll = () => {
+      setScrollPos(window.scrollY);
+    }
+
+    window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
+      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
   useEffect(() => {
     if (eyesContainerRef.current) {
-      const rect = eyesContainerRef.current.getBoundingClientRect();
-      const eyeCenterX = rect.left + rect.width * 0.72;
-      const eyeCenterY = rect.top + rect.height * 0.26;
-
-      const dx = cursorPos.x - eyeCenterX;
-      const dy = cursorPos.y - eyeCenterY;
-
-      // Limit the maximum offset
-      const maxOffset = 4; // Adjust this value as needed
-      const angle = Math.atan2(dy, dx);
-      const offsetX = Math.cos(angle) * maxOffset;
-      const offsetY = Math.sin(angle) * maxOffset;
-
-      setEyesOffset({ x: offsetX, y: offsetY });
+      if (window.innerWidth >= 768)
+      {
+        const rect = eyesContainerRef.current.getBoundingClientRect();
+        const eyeCenterX = rect.left + rect.width * 0.72;
+        const eyeCenterY = rect.top + rect.height * 0.26;
+  
+        const dx = cursorPos.x - eyeCenterX;
+        const dy = cursorPos.y - eyeCenterY;
+  
+        // Limit the maximum offset
+        const maxOffset = 4; // Adjust this value as needed
+        const angle = Math.atan2(dy, dx);
+        const offsetX = Math.cos(angle) * maxOffset;
+        const offsetY = Math.sin(angle) * maxOffset;
+  
+        setEyesOffset({ x: offsetX, y: offsetY });
+      }
+      else
+      {
+        setEyesOffset({ x: 0, y: 0});
+      }
     }
-  }, [cursorPos]);
+  }, [cursorPos, scrollPos]);
 
   return (
     <div className="scroll-smooth">
@@ -49,7 +63,7 @@ export default function Home() {
 
       {/* Home Section */}
       <Element name="home" className="element min-h-screen flex flex-col">
-        <div className="flex-1 pt-16 flex flex-col items-center">
+        <div className="flex-1 p-16 flex flex-col items-center">
           <img
             src="/Home/PortfolioSkrift.svg"
             className="antialiased"
@@ -93,7 +107,7 @@ export default function Home() {
       {/* Projects Section */}
       <Element
         name="works"
-        className="element min-h-screen bg-white flex items-center justify-center"
+        className="element min-h-screen bg-white flex items-center justify-center bg-transparent xl:bg-[url('/Works/WorksBackground.svg')] bg-cover bg-center bg-no-repeat"
       >
         <div className="flex flex-row">
           <div className="flex flex-col justify-center m-5 lg:m-20">
