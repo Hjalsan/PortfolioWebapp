@@ -114,7 +114,7 @@ export default function Home() {
             <h1 className="text-hjalmarBlue font-bold text-9xl mb-5">Hej!</h1>
             <p
               className="text-lg lg:text-2xl"
-              style={{ maxWidth: "900px" }}
+              style={{ maxWidth: "880px" }}
             >
               {worksParagraph}
             </p>
