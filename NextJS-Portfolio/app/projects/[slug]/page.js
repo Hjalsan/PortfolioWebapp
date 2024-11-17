@@ -6,7 +6,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const projectData = getProjectData(params.slug);
+  const projectData = getProjectData(await params.slug);
   return {
     title: projectData.title,
   };

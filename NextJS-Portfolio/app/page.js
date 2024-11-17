@@ -9,6 +9,7 @@ import { worksParagraph } from "./data/works";
 
 export default function Home() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [scrollPos, setScrollPos] = useState(0);
   const [eyesOffset, setEyesOffset] = useState({ x: 0, y: 0 });
   const eyesContainerRef = useRef(null);
 
@@ -17,31 +18,44 @@ export default function Home() {
       setCursorPos({ x: event.clientX, y: event.clientY });
     };
 
+    const handleScroll = () => {
+      setScrollPos(window.scrollY);
+    }
+
+    window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
+      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
   useEffect(() => {
     if (eyesContainerRef.current) {
-      const rect = eyesContainerRef.current.getBoundingClientRect();
-      const eyeCenterX = rect.left + rect.width * 0.72;
-      const eyeCenterY = rect.top + rect.height * 0.26;
-
-      const dx = cursorPos.x - eyeCenterX;
-      const dy = cursorPos.y - eyeCenterY;
-
-      // Limit the maximum offset
-      const maxOffset = 4; // Adjust this value as needed
-      const angle = Math.atan2(dy, dx);
-      const offsetX = Math.cos(angle) * maxOffset;
-      const offsetY = Math.sin(angle) * maxOffset;
-
-      setEyesOffset({ x: offsetX, y: offsetY });
+      if (window.innerWidth >= 768)
+      {
+        const rect = eyesContainerRef.current.getBoundingClientRect();
+        const eyeCenterX = rect.left + rect.width * 0.72;
+        const eyeCenterY = rect.top + rect.height * 0.26;
+  
+        const dx = cursorPos.x - eyeCenterX;
+        const dy = cursorPos.y - eyeCenterY;
+  
+        // Limit the maximum offset
+        const maxOffset = 4; // Adjust this value as needed
+        const angle = Math.atan2(dy, dx);
+        const offsetX = Math.cos(angle) * maxOffset;
+        const offsetY = Math.sin(angle) * maxOffset;
+  
+        setEyesOffset({ x: offsetX, y: offsetY });
+      }
+      else
+      {
+        setEyesOffset({ x: 0, y: 0});
+      }
     }
-  }, [cursorPos]);
+  }, [cursorPos, scrollPos]);
 
   return (
     <div className="scroll-smooth">
