@@ -27,6 +27,9 @@ const montserrat = localFont({
 export const metadata = {
   title: "Hjalmar Graphics",
   description: worksParagraph,
+  alternates: {
+    canonical: 'https://www.hjalmargraphics.com',
+  },
 };
 
 export default function RootLayout({ children }) {
