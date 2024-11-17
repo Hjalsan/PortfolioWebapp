@@ -1,5 +1,5 @@
 ---
-title: "Project Title"
+title: "IHG Sommer Projekt"
 date: "11-11-2024"
 icon: "/window.svg"
 media:
