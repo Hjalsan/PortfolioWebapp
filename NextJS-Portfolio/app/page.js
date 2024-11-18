@@ -7,8 +7,7 @@ import ProjectsList from './components/ProjectsList';
 import LottieAnimation from "./components/LottieAnimation";
 import { worksParagraph } from "./data/works";
 
-import PortfolioText from "./components/PortfolioSkrift.svg";
-import Flowers from "./components/Blomster.svg";
+import PortfolioText from "./components/PortfolioSkrift.svg"
 import AboutSection from "./components/About.svg";
 
 export default function Home() {
@@ -68,11 +67,16 @@ export default function Home() {
       {/* Home Section */}
       <Element name="home" className="element min-h-screen flex flex-col">
         <div className="flex-1 p-16 flex flex-col items-center">
-          <PortfolioText alt="Portfolio MEDIEGRAFIKER ELEV"/>
+          <img
+            src="/Home/PortfolioSkrift.svg"
+            className="antialiased"
+            alt="Portfolio MEDIEGRAFIKER ELEV"
+          />
         </div>
         <div className="flex flex-row justify-between items-end">
-          <Flowers
-            className="hidden xl:block"
+          <img
+            src="/Home/Blomster.svg"
+            className="hidden xl:block antialiased"
             alt="Flowers"
           />
 
