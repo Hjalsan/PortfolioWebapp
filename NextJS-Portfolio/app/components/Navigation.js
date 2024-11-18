@@ -1,24 +1,34 @@
 import React, { useState } from "react";
 import { Call, Mail } from "@mui/icons-material";
 import { sections } from "../data/sections";
+import { Link } from 'react-scroll';
 
-export default function Navigation({ activeSection, scrollToSection, className }) {
+export default function Navigation({ className }) {
+  const [activeSection, setActiveSection] = useState("home");
   const [showContacts, setShowContacts] = useState(false);
 
+  const handleMouseEnterContacts = () => setShowContacts(true);
+  const handleMouseLeaveContacts = () => setShowContacts(false);
+
   return (
-    <div
-      className={`${className} relative`}
-      onMouseLeave={() => setShowContacts(false)}
-    >
+    <div className={`${className} relative`}>
       {/* Main Navigation */}
-      <div className="fixed top-6 left-6 z-10 text-2xl text-hjalmarBlue">
+      <div className="fixed top-12 left-5 z-10 text-2xl text-hjalmarBlue">
         <div className="flex">
-          <nav className="space-y-1 backdrop-blur-lg p-3 rounded-xl relative">
+          <nav
+            style={{ width: "160px" }}
+            className="space-y-1 p-2 relative backdrop-blur-lg bg-white/20 border border-white/30 rounded-xl"
+          >
             {sections.map((section) => (
-              <button
+              <Link
                 key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={`flex items-center px-3 py-1 bg-transparent rounded ${
+                to={section.id}
+                spy={true}
+                smooth={true}
+                duration={500}
+                onSetActive={() => setActiveSection(section.id)}
+                onMouseEnter={() => setShowContacts(false)}
+                className={`flex items-center px-3 py-1 bg-transparent rounded hover:font-bold cursor-pointer ${
                   activeSection === section.id ? "font-bold" : ""
                 }`}
               >
@@ -30,11 +40,13 @@ export default function Navigation({ activeSection, scrollToSection, className }
                   }`}
                 />
                 {section.title}
-              </button>
+              </Link>
             ))}
+
             {/* Contacts Button */}
             <button
-              onMouseEnter={() => setShowContacts(true)}
+              onMouseEnter={handleMouseEnterContacts}
+              onMouseLeave={handleMouseLeaveContacts}
               className={`flex items-center px-3 py-1 bg-transparent rounded ${
                 showContacts ? "font-bold" : ""
               }`}
@@ -43,25 +55,39 @@ export default function Navigation({ activeSection, scrollToSection, className }
               Contacts
             </button>
           </nav>
-          {/* Contacts Menu - Positioned next to the main navigation */}
+
+          {/* Contacts Menu */}
           {showContacts && (
-            <div className="ml-3 backdrop-blur-lg bg-white/20 border border-white/30 shadow-lg p-4 rounded-xl text-hjalmarBlue transition-opacity duration-200">
-              <div className="flex flex-col justify-between h-full">
-                <div className="flex items-center mb-2">
-                  <Call fontSize="large" className="mr-3" />
-                  +45 42 58 31 58
-                </div>
-                <div className="flex items-center mb-2">
-                  <img
-                    src="/linkedin.svg"
-                    style={{ width: "36px" }}
-                    className="mr-3"
-                  />
-                  LinkedIn
-                </div>
-                <div className="flex items-center">
-                  <Mail fontSize="large" className="mr-3" />
-                  Mail
+            <div
+              className="pl-3"
+              onMouseEnter={handleMouseEnterContacts}
+              onMouseLeave={handleMouseLeaveContacts}
+            >
+              <div className="p-4 h-full backdrop-blur-lg bg-white/20 border border-white/30 shadow-lg rounded-xl text-hjalmarBlue transition-opacity duration-200">
+                <div className="flex flex-col justify-between h-full text-xl">
+                  <div className="flex items-center">
+                    <Call fontSize="large" className="mr-3" />
+                    <a href="tel:+4542583158">+45 42 58 31 58</a>
+                  </div>
+                  <div className="flex items-center">
+                    <Mail fontSize="large" className="mr-3" />
+                    <a href="mailto:hjalmargraphics@gmail.com">hjalmargraphics@gmail.com</a>
+                  </div>
+                  <div className="flex items-center">
+                    <img
+                      src="/linkedin.svg"
+                      style={{ width: "36px" }}
+                      className="mr-3"
+                      alt="LinkedIn"
+                    />
+                    <a
+                      href="https://www.linkedin.com/in/hjalmar-kjeldsen-b4264826a"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Hjalmar Kjeldsen
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

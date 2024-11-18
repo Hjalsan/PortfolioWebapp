@@ -1,8 +1,4 @@
 export const worksParagraph = 
-`Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy\n
-nibh euismod tincidunt ut laoreet dolore magna aliquam erat Lorem ipsum\n
-dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod\n
-tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad\n
-minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut\n
-aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in\n
-hendrerit in vulputate velit esse molestie consequat, vel illum`;
+`
+Mit navn er Hjalmar, jeg er en 19-årig mediegrafiker med flair for både illustration og motion graphics. Jeg brænder for at skabe kreative løsninger og har en stærk forståelse for visuelt design. Udover mine kernekompetencer i illustration og animation er jeg også alsidig og har erfaring med andre grafiske opgaver, hvilket gør mig i stand til at tilpasse mine færdigheder til mange typer projekter.
+`;

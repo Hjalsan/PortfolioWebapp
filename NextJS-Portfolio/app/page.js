@@ -1,116 +1,137 @@
 "use client";
 
-import Link from 'next/link';
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from 'react';
+import { Element } from 'react-scroll';
 import Navigation from "./components/Navigation";
+import ProjectsList from './components/ProjectsList';
 import LottieAnimation from "./components/LottieAnimation";
-import Section from "./components/Section";
-
-import { sections } from "./data/sections";
 import { worksParagraph } from "./data/works";
-import projects from "./data/projects.json";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("home");
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [scrollPos, setScrollPos] = useState(0);
+  const [eyesOffset, setEyesOffset] = useState({ x: 0, y: 0 });
+  const eyesContainerRef = useRef(null);
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px -20% 0px",
-      threshold: 0.1,
+    const handleMouseMove = (event) => {
+      setCursorPos({ x: event.clientX, y: event.clientY });
     };
-  
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-  
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-  
-    const observeSections = () => {
-      sections.forEach((section) => {
-        const element = document.getElementById(section.id);
-        if (element) observer.observe(element);
-      });
-    };
-  
-    observeSections();
-  
-    // Update observer on viewport resize
-    const handleResize = () => {
-      observer.disconnect();
-      observeSections(); 
-    };
-  
-    window.addEventListener("resize", handleResize);
-  
-    // Cleanup on unmount
+
+    const handleScroll = () => {
+      setScrollPos(window.scrollY);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+
     return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
-  };
+  useEffect(() => {
+    if (eyesContainerRef.current) {
+      if (window.innerWidth >= 768)
+      {
+        const rect = eyesContainerRef.current.getBoundingClientRect();
+        const eyeCenterX = rect.left + rect.width * 0.72;
+        const eyeCenterY = rect.top + rect.height * 0.26;
+  
+        const dx = cursorPos.x - eyeCenterX;
+        const dy = cursorPos.y - eyeCenterY;
+  
+        // Limit the maximum offset
+        const maxOffset = 4; // Adjust this value as needed
+        const angle = Math.atan2(dy, dx);
+        const offsetX = Math.cos(angle) * maxOffset;
+        const offsetY = Math.sin(angle) * maxOffset;
+  
+        setEyesOffset({ x: offsetX, y: offsetY });
+      }
+      else
+      {
+        setEyesOffset({ x: 0, y: 0});
+      }
+    }
+  }, [cursorPos, scrollPos]);
 
   return (
-    <div className="min-h-screen overflow-y-auto bg-white scroll-smooth">
-      <Navigation activeSection={activeSection} scrollToSection={scrollToSection} className="hidden md:block" />
+    <div className="scroll-smooth">
+      <Navigation className="hidden md:block" />
 
       {/* Home Section */}
-      <Section id="home" className="min-h-screen flex flex-col">
-        <div className="flex-1 p-4 flex flex-col items-center">
-          {/* Set a fixed size for the image */}
-          <img src="/Home/PortfolioSkrift.svg" className="antialiased" alt="Portfolio MEDIEGRAFIKER ELEV" />
+      <Element name="home" className="element min-h-screen flex flex-col">
+        <div className="flex-1 p-16 flex flex-col items-center">
+          <img
+            src="/Home/PortfolioSkrift.svg"
+            className="antialiased"
+            alt="Portfolio MEDIEGRAFIKER ELEV"
+          />
         </div>
-        <div className="flex flex-row justify-between align items-end">
-          {/* Fixed width and height for the background image */}
-          <img src="/Home/Blomster.svg" className="hidden xl:block antialiased" alt="Flowers" />
-          <img src="/Home/HjalmarComputer.svg" className="antialiased" alt="Hjalmar Sitting at desk" />
+        <div className="flex flex-row justify-between items-end">
+          <img
+            src="/Home/Blomster.svg"
+            className="hidden xl:block antialiased"
+            alt="Flowers"
+          />
+
+          <div
+            style={{ width: "789px", height: "430px" }}
+            className="relative flex justify-end items-end overflow-hidden"
+            ref={eyesContainerRef}
+          >
+            <LottieAnimation
+              className="flex justify-end items-end absolute inset-0 z-10 pointer-events-none"
+              path="/Home/HjalmarAnimation.json"
+              alt="Hjalmar Sitting at Computer"
+            />
+            <img
+              className="inset-0 z-20 pointer-events-none"
+              src="/Home/HjalmarEyes.svg"
+              alt="Hjalmar Eyes"
+              style={{
+                transform: `translate(${eyesOffset.x}px, ${eyesOffset.y}px)`
+              }}
+            />
+            <LottieAnimation
+              className="flex justify-end items-end absolute inset-0 z-30 pointer-events-none"
+              path="/Home/HjalmarEyeAnimation.json"
+              alt="Hjalmar Eyes Animation"
+            />
+          </div>
         </div>
-      </Section>
+      </Element>
 
       {/* Projects Section */}
-      <Section id="works" className="min-h-screen bg-white flex items-center justify-center">
+      <Element
+        name="works"
+        className="element min-h-screen bg-white flex items-center justify-center bg-transparent xl:bg-[url('/Works/WorksBackground.svg')] bg-cover bg-center bg-no-repeat"
+      >
         <div className="flex flex-row">
           <div className="flex flex-col justify-center m-5 lg:m-20">
             <h1 className="text-hjalmarBlue font-bold text-9xl mb-5">Hej!</h1>
-            <p className="text-lg lg:text-2xl" style={{maxWidth: "950px"}}>{worksParagraph}</p>
+            <p
+              className="text-lg lg:text-2xl"
+              style={{ maxWidth: "750px" }}
+            >
+              {worksParagraph}
+            </p>
           </div>
-          <div className="hidden 2xl:block">
-            <div className="grid grid-cols-2 gap-6">
-              {projects.map((project, index) => (
-                <Link key={index} href={`/projects/${encodeURIComponent(project.title)}`}>
-                  <div style={{ width: "200px", height: "200px" }} className="flex relative shadow">
-                    <img className="" src={project.icon} alt={`${project.title} icon`} />
-                    <div className="flex justify-center items-center absolute inset-0 group">
-                      {/* Background layer with hover opacity */}
-                      <div className="absolute inset-0 bg-hjalmarBlue opacity-0 transition-opacity duration-200 hover:opacity-80"></div>
-                      
-                      {/* h2 text with initial opacity 0, blue color on hover, and smooth transition */}
-                      <h2 className="text-4xl text-white font-bold text-center break-words opacity-0 transition-all duration-200 hover:opacity-100 pointer-events-none">
-                        {project.title}
-                      </h2>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+          <ProjectsList className="hidden 2xl:block" />
         </div>
-      </Section>
+      </Element>
 
       {/* Timeline Section */}
-      <Section id="about" className="bg-gray-400 flex items-center justify-center">
-        <div style={{height: "2000px"}}>
+      <Element
+        name="about"
+        className="element bg-gray-400 flex items-center justify-center"
+      >
+        <div style={{ height: "2000px" }}>
           <LottieAnimation path="/Loader/LoaderPortfolio.json" />
         </div>
-      </Section>
+      </Element>
     </div>
   );
 }
