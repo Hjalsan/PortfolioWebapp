@@ -7,6 +7,10 @@ import ProjectsList from './components/ProjectsList';
 import LottieAnimation from "./components/LottieAnimation";
 import { worksParagraph } from "./data/works";
 
+import PortfolioText from "./components/PortfolioSkrift.svg";
+import Flowers from "./components/Blomster.svg";
+import AboutSection from "./components/About.svg";
+
 export default function Home() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [scrollPos, setScrollPos] = useState(0);
@@ -64,16 +68,11 @@ export default function Home() {
       {/* Home Section */}
       <Element name="home" className="element min-h-screen flex flex-col">
         <div className="flex-1 p-16 flex flex-col items-center">
-          <img
-            src="/Home/PortfolioSkrift.svg"
-            className="antialiased"
-            alt="Portfolio MEDIEGRAFIKER ELEV"
-          />
+          <PortfolioText alt="Portfolio MEDIEGRAFIKER ELEV"/>
         </div>
         <div className="flex flex-row justify-between items-end">
-          <img
-            src="/Home/Blomster.svg"
-            className="hidden xl:block antialiased"
+          <Flowers
+            className="hidden xl:block"
             alt="Flowers"
           />
 
@@ -119,18 +118,16 @@ export default function Home() {
               {worksParagraph}
             </p>
           </div>
-          <ProjectsList className="hidden 2xl:block" />
+          <ProjectsList className="flex-shrink-0 hidden lg:block mr-20" />
         </div>
       </Element>
 
       {/* Timeline Section */}
       <Element
         name="about"
-        className="element bg-gray-400 flex items-center justify-center"
+        className="element flex items-center justify-center"
       >
-        <div style={{ height: "2000px" }}>
-          <LottieAnimation path="/Loader/LoaderPortfolio.json" />
-        </div>
+        <AboutSection style={{width: "1280px"}} />
       </Element>
     </div>
   );

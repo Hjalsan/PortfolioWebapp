@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'montserrat': ["var(--font-montserrat)", "sans-serif"],
+        'diaryAgustus': ["var(--font-diaryAgustus)", "sans-serif"],
       },
       colors: {
         background: "var(--background)",

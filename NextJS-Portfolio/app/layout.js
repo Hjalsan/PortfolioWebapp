@@ -23,6 +23,11 @@ const montserrat = localFont({
   style: "normal",
 })
 
+const diaryAgustus = localFont({
+  src: "./fonts/DiaryAgustus.otf",
+  variable: "--font-diaryAgustus",
+  style: "normal"
+})
 
 export const metadata = {
   title: "Hjalmar Graphics",
