@@ -1,7 +1,7 @@
 ---
-title: "IHG Sommer Projekt"
-date: "11-11-2024"
-icon: "/window.svg"
+title: "IHG Sommer"
+date: "28-06-2024"
+icon: "/window.png"
 media:
   - "/ProjectOne/ProjectOne.jpg"
   - "https://example.com/monkey.png"
