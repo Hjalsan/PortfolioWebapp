@@ -7,7 +7,6 @@ import ProjectsList from './components/ProjectsList';
 import LottieAnimation from "./components/LottieAnimation";
 import { worksParagraph } from "./data/works";
 
-import PortfolioText from "./components/PortfolioSkrift.svg"
 import AboutSection from "./components/About.svg";
 
 export default function Home() {
