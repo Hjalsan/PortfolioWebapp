@@ -4,6 +4,7 @@ import {
   getPreviousProjectLink, 
   getNextProjectLink 
 } from '../../lib/loadProjects';
+import Link from "next/link";
 
 export async function generateStaticParams() {
   const paths = getAllProjectPaths();
@@ -31,12 +32,12 @@ export default async function ProjectPage({ params }) {
   return (
     <div className="flex flex-col justify-around">
       {/* Back Button */}
-      <a
+      <Link
         href="/"
         className="fixed top-4 left-4 bg-hjalmarBlue text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition duration-200"
       >
         Back
-      </a>
+      </Link>
 
       {/* Project Content */}
       <div className="flex justify-around w-full">
