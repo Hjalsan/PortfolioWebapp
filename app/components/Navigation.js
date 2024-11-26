@@ -42,8 +42,7 @@ export default function Navigation({ className }) {
                 {section.title}
               </Link>
             ))}
-
-            {/* Contacts Button */}
+            {/*
             <button
               onMouseEnter={handleMouseEnterContacts}
               onMouseLeave={handleMouseLeaveContacts}
@@ -54,9 +53,10 @@ export default function Navigation({ className }) {
               <span className="w-2 h-2 rounded-full mr-2" />
               Contacts
             </button>
+            */}
           </nav>
 
-          {/* Contacts Menu */}
+          {/*   
           {showContacts && (
             <div
               className="pl-3"
@@ -92,6 +92,7 @@ export default function Navigation({ className }) {
               </div>
             </div>
           )}
+          */}
         </div>
       </div>
     </div>
