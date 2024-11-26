@@ -138,7 +138,7 @@ export default function Home() {
       {/* Contacts Section*/}
       <Element name="contacts" className="flex justify-center items-center h-screen pl-44 bg-white text-gray-900">
         <div className="flex flex-row text-hjalmarBlue">
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-end">
             <h1 className="text-hjalmarBlue text-5xl font-bold mb-8">Lad os tage en kop kaffe!</h1>
             <p style={{width: "875px"}} className="text-black text-2xl mb-8">{contactsParagraph}</p>
             <div className="flex flex-row justify-between">
