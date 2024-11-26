@@ -136,19 +136,19 @@ export default function Home() {
       </Element>
       
       {/* Contacts Section*/}
-      <Element name="contacts" className="flex justify-center items-center h-screen pl-36 bg-white text-gray-900">
+      <Element name="contacts" className="flex justify-center items-center h-screen pl-44 bg-white text-gray-900">
         <div className="flex flex-row text-hjalmarBlue">
           <div className="flex flex-col justify-center">
-            <h1 className="text-hjalmarBlue text-7xl font-bold mb-8">Lad os tage en kop kaffe!</h1>
-            <p style={{width: "875px"}} className="text-black text-4xl mb-8">{contactsParagraph}</p>
+            <h1 className="text-hjalmarBlue text-5xl font-bold mb-8">Lad os tage en kop kaffe!</h1>
+            <p style={{width: "875px"}} className="text-black text-2xl mb-8">{contactsParagraph}</p>
             <div className="flex flex-row justify-between">
-              <div className="flex flex-col justify-evenly text-3xl">
+              <div className="flex flex-col justify-evenly text-2xl">
                 <div className="flex items-center">
-                  <Call className="mr-3 text-6xl" />
+                  <Call fontSize="inherit" style={{ fontSize: '56px' }} className="mr-3" />
                   <a href="tel:+4542583158">+45 42 58 31 58</a>
                 </div>
                 <div className="flex items-center">
-                  <Mail className="mr-3 text-6xl" />
+                  <Mail fontSize="inherit" style={{ fontSize: '56px' }} className="mr-3" />
                   <a href="mailto:hjalmargraphics@gmail.com">hjalmargraphics@gmail.com</a>
                 </div>
                 <div className="flex items-center">
