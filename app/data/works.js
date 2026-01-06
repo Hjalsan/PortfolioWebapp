@@ -1,4 +1,4 @@
 export const worksParagraph = 
 `
-Mit navn er Hjalmar, jeg er en 19-årig mediegrafiker med flair for både illustration og motion graphics. Jeg brænder for at skabe kreative løsninger og har en stærk forståelse for visuelt design. Udover mine kernekompetencer i illustration og animation er jeg også alsidig og har erfaring med andre grafiske opgaver, hvilket gør mig i stand til at tilpasse mine færdigheder til mange typer projekter.
+Jeg hedder Hjalmar og er mediegrafiker med forkærlighed for illustration og motion graphics. Jeg arbejder målrettet med visuelt design og kan lide at gøre komplekse idéer enkle, skarpe og levende. Jeg er alsidig i mit arbejde og bevæger mig naturligt mellem forskellige grafiske opgaver og formater.
 `;
